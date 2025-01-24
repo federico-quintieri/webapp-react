@@ -9,7 +9,7 @@ export function CardList() {
   const [movies, setMovies] = useState([]);
 
   // Strutturo fetch API con useQuery
-  const { data, refetch, isSuccess } = useQuery({
+  const { data, isSuccess } = useQuery({
     queryKey: ["movies"],
     queryFn: fetchMovies, // Deve essere passata come riferimento
   });

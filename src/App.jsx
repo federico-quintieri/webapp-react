@@ -3,6 +3,7 @@ import { Layout } from "./pages/Layout";
 import { HomePage } from "./pages/HomePage";
 import { MovieList } from "./pages/MovieList";
 import { NoPage } from "./pages/NoPage";
+import { MovieDetail } from "./pages/MovieDetail";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="movies" element={<MovieList />} />
+          <Route path="movies/:id" element={<MovieDetail />} />
           <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
