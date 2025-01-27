@@ -31,7 +31,12 @@ export function Card({
       <p className="text-gray-600 mt-1">
         <span className="font-medium">Release Year:</span> {release_year}
       </p>
-      <Link to={`/movies/${slug}`}>Dettagli</Link>
+      <Link
+        className="px-2 py-1 text-sm text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-md hover:from-blue-600 hover:to-purple-600"
+        to={`/movies/${slug}`}
+      >
+        Dettagli
+      </Link>
     </div>
   );
 }

@@ -66,7 +66,7 @@ export function MovieDetail() {
         </p>
         <button
           onClick={() => window.history.back()}
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded"
+          className="px-2 py-1 text-sm text-white bg-gradient-to-r from-blue-500 to-purple-500 rounded-md hover:from-blue-600 hover:to-purple-600"
         >
           Torna indietro
         </button>
