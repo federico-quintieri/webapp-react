@@ -3,12 +3,17 @@ import { useParams } from "react-router-dom";
 import { fetchOneMovie } from "../services/api";
 
 export function MovieDetail() {
-  const { id } = useParams(); // Recupero l'ID dalla URL
+  const { slug } = useParams(); // Recupero l'ID dalla URL
 
   // Utilizzo useQuery per recuperare i dettagli del film
-  const { data: movie, isLoading, isError, error } = useQuery({
-    queryKey: ["movie", id],
-    queryFn: () => fetchOneMovie(id), // Passo l'ID al fetch
+  const {
+    data: movie,
+    isLoading,
+    isError,
+    error,
+  } = useQuery({
+    queryKey: ["movie", slug],
+    queryFn: () => fetchOneMovie(slug), // Passo l'ID al fetch
   });
 
   // Gestione del caricamento
@@ -29,7 +34,7 @@ export function MovieDetail() {
   if (!movie) {
     return (
       <div className="text-center mt-10">
-        Nessun dettaglio trovato per il film con ID: {id}
+        Nessun dettaglio trovato per il film con ID: {slug}
       </div>
     );
   }
@@ -51,9 +56,14 @@ export function MovieDetail() {
           <span className="font-medium">Genre:</span> {movie.genre}
         </p>
         <p className="text-gray-600">
-          <span className="font-medium">Release Year:</span> {movie.release_year}
+          <span className="font-medium">Release Year:</span>{" "}
+          {movie.release_year}
         </p>
         <p className="text-gray-600 mt-4">{movie.description}</p>
+        <p className="text-gray-600 mt-4">
+          <span className="font-medium">Vote: </span>
+          {movie.average_vote}
+        </p>
         <button
           onClick={() => window.history.back()}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-4 rounded"

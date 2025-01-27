@@ -39,6 +39,7 @@ export function CardList() {
             title={movie.title}
             key={movie.id}
             image={movie.image}
+            slug={movie.slug}
           />
         ))}
       </div>
