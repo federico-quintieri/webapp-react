@@ -19,3 +19,10 @@ export const fetchReviews = async () => {
   const response = await axios.get(`${BASE_URL}movies/get/reviews`);
   return response.data;
 };
+
+// Esporto funzione per inviare chiamata post aggiunta recensione
+// Da aggiungere fine url
+export async function postReview(id, review) {
+  const response = await axios.post(`${BASE_URL}movies/${id}/reviews`, review);
+  return response;
+}
