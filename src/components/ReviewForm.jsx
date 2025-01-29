@@ -1,7 +1,7 @@
 // ReviewForm.js
 import { useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { postReview } from "../services/api";
+import { fetchMovies, postReview } from "../services/api";
 
 // Oggetto inputs
 const oggettoPartenza = {
@@ -11,7 +11,7 @@ const oggettoPartenza = {
   text: "",
 };
 
-export function ReviewForm() {
+export function ReviewForm({ propID_movie }) {
   const queryClient = useQueryClient();
 
   // Faccio variabile state che contiene input values da mandare poi al backend
@@ -38,9 +38,15 @@ export function ReviewForm() {
   // Callback che gestisce aggiornamento valori allo OnChange
   const handleOnChange = (e) => {
     setNewReview((prev) => {
-      return { ...prev, [e.target.name]: e.target.value };
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+        movie_id: propID_movie,
+      };
     });
   };
+
+  console.log(newReview);
 
   return (
     <form className="review-form mt-4" onSubmit={handleSubmit}>

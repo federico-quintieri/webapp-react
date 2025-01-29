@@ -4,7 +4,7 @@ import { Review } from "./Review";
 import { fetchReviews } from "../services/api";
 import { ReviewForm } from "./ReviewForm"; // Importa il nuovo componente
 
-export function ReviewList() {
+export function ReviewList({propID_movie}) {
   const {
     data: reviews,
     isLoading,
