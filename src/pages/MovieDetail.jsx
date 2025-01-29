@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "react-router-dom";
 import { fetchOneMovie } from "../services/api";
+import { ReviewList } from "../components/ReviewList";
 
 export function MovieDetail() {
   const { slug } = useParams(); // Recupero l'ID dalla URL
@@ -71,6 +72,7 @@ export function MovieDetail() {
           Torna indietro
         </button>
       </div>
+      <ReviewList />
     </div>
   );
 }

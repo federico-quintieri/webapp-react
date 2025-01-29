@@ -13,3 +13,9 @@ export const fetchOneMovie = async (id) => {
   const response = await axios.get(`${BASE_URL}movies/${id}`);
   return response.data;
 };
+
+// Esporto funzione che fa chiamata index al backend per le reviews
+export const fetchReviews = async () => {
+  const response = await axios.get(`${BASE_URL}movies/get/reviews`);
+  return response.data;
+};
