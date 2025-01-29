@@ -4,7 +4,8 @@ import { fetchOneMovie } from "../services/api";
 import { ReviewList } from "../components/ReviewList";
 
 export function MovieDetail() {
-  const { slug } = useParams(); // Recupero l'ID dalla URL
+  // Recupero lo slug dal movie
+  const { slug } = useParams();
 
   // Utilizzo useQuery per recuperare i dettagli del film
   const {
@@ -14,7 +15,7 @@ export function MovieDetail() {
     error,
   } = useQuery({
     queryKey: ["movie", slug],
-    queryFn: () => fetchOneMovie(slug), // Passo l'ID al fetch
+    queryFn: () => fetchOneMovie(slug), // Passo slug del movie per recuperare dettagli
   });
 
   // Gestione del caricamento
@@ -72,7 +73,7 @@ export function MovieDetail() {
           Torna indietro
         </button>
       </div>
-      <ReviewList />
+      <ReviewList movieSlug={slug}/>
     </div>
   );
 }

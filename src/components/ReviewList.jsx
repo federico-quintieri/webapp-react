@@ -4,14 +4,14 @@ import { Review } from "./Review";
 import { fetchReviews } from "../services/api";
 import { ReviewForm } from "./ReviewForm"; // Importa il nuovo componente
 
-export function ReviewList({propID_movie}) {
+export function ReviewList({movieSlug}) {
   const {
     data: reviews,
     isLoading,
     error,
   } = useQuery({
     queryKey: ["reviews"],
-    queryFn: fetchReviews,
+    queryFn: () => fetchReviews(movieSlug),
   });
 
   if (isLoading) return <div>Caricamento recensioni...</div>;
@@ -34,7 +34,7 @@ export function ReviewList({propID_movie}) {
       )}
 
       {/* Aggiungi una recensione */}
-      <ReviewForm />
+      <ReviewForm movieSlug={movieSlug}/>
     </div>
   );
 }
